@@ -5,7 +5,7 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./src:/var/www/html
+      - ./:/var/www/html
     environment:
       # Direct connections over the network to the central server
       # Instruct students to adjust this to the teacher's static classroom server IP
