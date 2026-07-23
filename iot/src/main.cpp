@@ -1,10 +1,22 @@
 #include <Arduino.h>
 #include <PubSubClient.h>
 
-void setup () {
+#define pinLed 13
 
+void led()
+{
+  digitalWrite(pinLed, HIGH);
+  delay(500);
+  digitalWrite(pinLed, LOW);
+  delay(500);
 }
 
-void loop () {
+void setup()
+{
+  pinMode(pinLed, OUTPUT);
+}
 
+void loop()
+{
+  led();
 }
