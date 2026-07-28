@@ -27,3 +27,6 @@ build/
 # Local/Secret files (if you use custom environment variables)
 *.ini.local
 _db_publisher_app/published_modules.json
+
+# sensitive Information
+sensitiveInformation.h
