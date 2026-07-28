@@ -29,4 +29,4 @@ build/
 _db_publisher_app/published_modules.json
 
 # sensitive Information
-sensitiveInformation.h
+iot/src/sensitiveInformation.h
