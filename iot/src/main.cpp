@@ -37,12 +37,17 @@ void setup()
         delay(10);
     }
     delay(1000);
+
+    randomSeed(analogRead(A0));
 }
 
 void loop()
 {
     // 1. Maintain connection to the broker
     mqttConnect();
+
+    int randomNumber = random(1, 1000001);
+    sendPeriodicUpdate("sensorData/" + String(mqttClient), String(randomNumber));
 
     // 2. Transmit periodic telemetry (if required by design specification)
     unsigned long now = millis();
@@ -56,3 +61,7 @@ void loop()
     client.loop();
     delay(100);
 }
+
+// EventLog = event log (Uploading)
+// sensorData = Data for sensors (telemetry) (Uploading)
+// devicePayload = ESP32 action data (Downloading)
