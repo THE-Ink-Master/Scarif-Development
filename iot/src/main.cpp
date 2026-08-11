@@ -1,10 +1,20 @@
 // Set a unique identifier for your device before importing comms.h
-const char *mqttClient = "ESP32_Jackk"; // EDIT THIS FIELD
+const char *mqttClient = "ESP32_Jack"; // EDIT THIS FIELD
 
 const char *mqttTopic;
 
 #include <Arduino.h>
 #include "comms.h"
+#include <Wire.h>
+#include "Adafruit_ADT7410.h"
+
+float temp = 0;
+
+Adafruit_ADT7410 tempsensor = Adafruit_ADT7410();
+
+void temperature() {
+    temp = tempsensor.readTempC();
+}
 
 void performActionBasedOnPayload(String payload)
 {
@@ -28,7 +38,14 @@ void setup()
 {
     pinMode(LED_BUILTIN, OUTPUT);
     Serial.begin(9600);
-    
+
+    if (!tempsensor.begin())
+    {
+        Serial.println("Couldn't find ADT7410!");
+        while (1);
+    }
+    delay(250);
+
     wifiSetup();
     mqttSetup();
 
@@ -46,8 +63,9 @@ void loop()
     // 1. Maintain connection to the broker
     mqttConnect();
 
-    int randomNumber = random(1, 1000001);
-    sendPeriodicUpdate("sensorData/" + String(mqttClient), String(randomNumber));
+    temperature();
+    int randomNumber = random(1, 100001);
+    sendPeriodicUpdate("sensorData", String(temp));
 
     // 2. Transmit periodic telemetry (if required by design specification)
     unsigned long now = millis();
