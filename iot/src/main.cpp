@@ -61,7 +61,7 @@ void loop()
 
     temp = tempsensor.readTempC();
     // int randomNumber = random(1, 100001);
-    sendPeriodicUpdate("sensorData", String(temp) + "°C");
+    sendPeriodicUpdate("sensorData", String(temp));
 
     // 2. Transmit periodic telemetry (if required by design specification)
     // unsigned long now = millis();
