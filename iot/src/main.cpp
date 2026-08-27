@@ -68,7 +68,7 @@ void loop()
     // if (now - lastUpdate > updateInterval)
     // {
     //     lastUpdate = now;
-        // TODO: Insert customized sendDataToServer() calls here.
+    //     // TODO: Insert customized sendDataToServer() calls here.
     // }
 
     // 3. Yield execution time for PubSubClient processing
