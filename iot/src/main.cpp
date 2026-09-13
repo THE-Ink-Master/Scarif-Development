@@ -8,7 +8,7 @@ const char *mqttTopic;
 #include <Wire.h>
 #include "Adafruit_ADT7410.h"
 
-float temp = 0;
+float temperature = 0;
 
 Adafruit_ADT7410 tempsensor = Adafruit_ADT7410();
 
@@ -59,9 +59,9 @@ void loop()
     // 1. Maintain connection to the broker
     mqttConnect();
 
-    temp = tempsensor.readTempC();
+    temperature = tempsensor.readTempC();
     // int randomNumber = random(1, 100001);
-    sendPeriodicUpdate("sensorData", String(temp));
+    sendPeriodicUpdate("sensorData", String(temperature));
 
     // 2. Transmit periodic telemetry (if required by design specification)
     // unsigned long now = millis();
