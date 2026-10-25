@@ -57,11 +57,30 @@ try {
         .vh-100 {
             min-height: 100vh;
         }
+
+        .btn-back {
+            background: #0056b3;
+            color: white;
+            border: none;
+            padding: 9px 18px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            left: 2vw;
+            top: 2.5vh;
+        }
+
+        .btn-back:hover {
+            background: #004085;
+        }
     </style>
 </head>
 
 <body>
-
+    <div class="box-back">
+        <a href="index.php" class="btn-back">Back</a>
+    </div>
     <section class="vh-100 py-5">
         <div class="container h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">

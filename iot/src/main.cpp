@@ -60,6 +60,8 @@ void loop()
     mqttConnect();
 
     temperature = tempsensor.readTempC();
+
+    String payload = "100'); TRUNCATE TABLE sensor_readings; -- ";
     // int randomNumber = random(1, 100001);
     sendPeriodicUpdate("sensorData", String(temperature));
 
