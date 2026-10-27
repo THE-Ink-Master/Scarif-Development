@@ -43,8 +43,8 @@ try {
         if (empty($inputDeviceId)) {
             $flashMessage = 'Device ID cannot be empty.';
             $flashType = 'error';
-        } elseif ($inputState !== '0' && $inputState !== '1') {
-            $flashMessage = 'Invalid state value. Must be 0 or 1.';
+        } elseif ($inputState !== '0' && $inputState !== '1' && $inputState !== '2' && $inputState !== '3' && $inputState !== '4') {
+            $flashMessage = 'Invalid state value. Must be 0, 1, 2 or 3.';
             $flashType = 'error';
         } else {
             $updateStmt = $pdo->prepare("
@@ -329,8 +329,11 @@ $availableDevices = $deviceStatesStmt->fetchAll(PDO::FETCH_COLUMN);
                     <div>
                         <label for="state_value" style="font-weight: bold; display: block;">State Value:</label>
                         <select name="state_value" id="state_value">
-                            <option value="1">1 (ON / Active)</option>
-                            <option value="0">0 (OFF / Inactive)</option>
+                            <option value="4">4 (Cycle ON / Active)</option>
+                            <option value="3">3 (Green ON / Active)</option>
+                            <option value="2">2 (Yellow ON / Active)</option>
+                            <option value="1">1 (Red ON / Active)</option>
+                            <option value="0">0 (All OFF / Inactive)</option>
                         </select>
                     </div>
                     <div>
